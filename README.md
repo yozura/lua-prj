@@ -1,2 +1,2 @@
-# lua-prj
-until get lua skills
+# lua-projects
+sono 1. chatgpt api
