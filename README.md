@@ -1,2 +1,2 @@
 # lua-projects
-sono 1. chatgpt api
+1. chatgpt
