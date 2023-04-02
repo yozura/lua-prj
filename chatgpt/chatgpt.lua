@@ -8,17 +8,19 @@ local api_key = os.getenv("CHATGPT_API_KEY")
 
 -- func
 local function chat(prompt)
-    local url = "https://api.openai.com/v1/engines/babbage/completions"
+    local url = "https://api.openai.com/v1/chat/completions"
     local headers = {
         ["Content-Type"] = "application/json",
         ["Authorization"] = "Bearer " .. api_key
     }
     local payload = {
-        prompt = prompt,
-        max_tokens = 100,
-        n = 1,
-        stop = {"\n"},
-        temperature = 0.5
+        model = "gpt-3.5-turbo",
+        messages = { 
+            {
+                role = "user",
+                content = prompt
+            }
+        }
     }
     local res_body = {}
 
@@ -35,15 +37,15 @@ local function chat(prompt)
     end
 
     local res = dkjson.decode(table.concat(res_body))
-    return res.choices[1].text
+    return res.choices[1].message.content
 end
 
 print("You can text with ChatGPT!")
 print("Your API Key : " .. api_key)
 while true do
+    io.write("You: ")
     local prompt = io.read()
     local response = chat(prompt)
     print("ChatGPT: " .. response)
 end
-
 
