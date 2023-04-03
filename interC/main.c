@@ -3,7 +3,7 @@
 #include <lauxlib.h>
 #include <lualib.h>
 
-static int multiply(lua_State *L)
+int multiply(lua_State *L)
 {
     int a = luaL_checkinteger(L, 1); // First Argument
     int b = luaL_checkinteger(L, 2); // Second Argument
