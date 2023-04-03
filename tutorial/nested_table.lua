@@ -18,7 +18,12 @@ local school = {
 table.insert(school.classes[1].students, "Grace")
 
 -- Access Element
-print(school.classes[1].name) -- Math
+print(school.classes[1].name)                       -- Math
+print(school["classes"][2]["name"])                 -- History
+
+-- Remove Element
+school["classes"]["name"] = nil                     -- Central High School
+table.remove(school["classes"][2]["students"], 2)   -- Emily
 
 -- Traversing the nested table
 for _, class in ipairs(school.classes) do
